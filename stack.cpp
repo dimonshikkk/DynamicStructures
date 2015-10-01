@@ -1,45 +1,36 @@
 #include "stdafx.h"
-#include "header.h"
+#include "queue.h"
 #include <iostream>
-using namespace std;
 
-
-void push(node **top, int d)
+node *first(int d)
 {
-	node *q = new node;
-	
-	q->val = d; //(*q).val
-	q->prev = *top;
-
-	*top = q;
+	node *pv = new node;
+	pv->d = d;
+	pv->p = NULL;
+	return pv;
 }
-
-
-int pop(node **top)
+void add(node **pend, int d)
 {
-	int temp = (**top).val;
-	node *q = *top; // дубликат структуры
-	*top = (**top).prev; // определение новой вершины
-	delete q; //освобождение памяти
-	return temp; // возвращение информационного поля
+	node *pv = new node;
+	pv->d = d;
+	pv->p = NULL;
+	(*pend)->p = pv;
+	*pend = pv;
 }
-
-
-void print(node **top)
+int del(node **pbeg)
 {
-	while (*top)
-	cout << pop(top);
+	int temp = (*pbeg)->d;
+	node *pv = *pbeg;
+	*pbeg = (*pbeg)->p;
+	delete pv;
+	return temp;
 }
-
-
-void print1(node *top)
+void print(node *pbeg)
 {
-	node *t;
-	t = top;
-	while (t)
+	node *pv = pbeg;
+	while (pv != NULL)
 	{
-		cout << t->val << endl;
-		t = t->prev;
-
+		cout << pv->d << endl;
+		pv = pv->p;
 	}
 }
