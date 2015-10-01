@@ -25,3 +25,12 @@ int del(node **pbeg)
 	delete pv;
 	return temp;
 }
+void print(node *pbeg)
+{
+	node *pv = pbeg;
+	while (pv != NULL)
+	{
+		cout << pv->d << endl;
+		pv = pv->p;
+	}
+}
