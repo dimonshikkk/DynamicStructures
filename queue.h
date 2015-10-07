@@ -14,3 +14,4 @@ node *first(int d);
 void add(node **pend, int d);
 int del(node **pbeg);
 void print(node *pbeg);
+int empty(node *pbeg);
