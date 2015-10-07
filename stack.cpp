@@ -2,32 +2,25 @@
 #include "queue.h"
 #include <iostream>
 
-node *first(int d)
+
+void push(node **top, int d)
 {
 	node *pv = new node;
 	pv->d = d;
-	pv->p = NULL;
-	return pv;
+	pv->p = *top;
+	*top = pv;
 }
-void add(node **pend, int d)
+int pop(node **top)
 {
-	node *pv = new node;
-	pv->d = d;
-	pv->p = NULL;
-	(*pend)->p = pv;
-	*pend = pv;
-}
-int del(node **pbeg)
-{
-	int temp = (*pbeg)->d;
-	node *pv = *pbeg;
-	*pbeg = (*pbeg)->p;
+	int temp = (*top)->d;
+	node *pv = *top;
+	*top = (*top)->p;
 	delete pv;
 	return temp;
 }
-void print(node *pbeg)
+void print(node **top)
 {
-	node *pv = pbeg;
+	node *pv = top;
 	while (pv != NULL)
 	{
 		cout << pv->d << endl;
