@@ -11,42 +11,64 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int a,mn;
+	int a, mn;
 	bool fl = 1;
 	node *pbeg = NULL;
 	node *pend = NULL;
 	setlocale(LC_ALL, "Russian");
-  cout <<"Выберите пунк из меню:"<<endl;
-  cout <<"0)Выход"<<endl;
-  cout <<"1)Добавить элемент в очередь"<<endl;
-  cout <<"2)Удалить элемент из очереди"<<endl;
-  cout <<"3)Печать очереди"<<endl;
-  cin  >> mn;
-  switch (mn)
-  {
-  case 0:
-  return 0;
-  case 1:
-  {
-	cout << "Введите число в очередь:" << endl;
-	cin >> a;
-	if ( empty(pbeg)==0)
-	pbeg = pend = first(a);
-	else
-	add(&pend, a);
 	
-	case 2:
-	{
-	if ( empty(pbeg)==0)
-	cout <<"Элементов в очереди нет"<<endl;
-	else
-	del(&pbeg);
-	cout << endl;
-	case 3:
-	if ( empty(pbeg)==0)
-	cout <<"Элементов в очереди нет"<<endl;
-	else
-	print(pbeg);
+
+		do
+		{
+			cout << "Выберите пунк из меню:" << endl;
+			cout << "0)Выход" << endl;
+			cout << "1)Добавить элемент в очередь" << endl;
+			cout << "2)Удалить элемент из очереди" << endl;
+			cout << "3)Печать очереди" << endl;
+			cin >> mn;
+			switch (mn)
+		
+			{
+		
+			case 1:
+		
+			{
+			cout << "Введите число в очередь:" << endl;
+			cin >> a;
+			if (empty(pbeg) == 0)
+				pbeg = pend = first(a);
+			else
+				add(&pend, a);
+			break;
+		
+			}
+		
+			case 2:
+		
+			{
+			if (empty(pbeg) == 0)
+				cout << "Элементов в очереди нет" << endl;
+			else
+				del(&pbeg);
+			cout << endl;
+			break;
+		
+			}
+		
+			case 3:
+		
+			{
+			if (empty(pbeg) == 0)
+				cout << "Элементов в очереди нет" << endl;
+			else
+				print(pbeg);
+			break;
+		
+			}
+		
+			}
+		
+		} while (mn != 0);
 	_getch();
 	return 0;
 }
