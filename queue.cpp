@@ -34,9 +34,9 @@ void print(node *pbeg)
 		pv = pv->p;
 	}
 }
-int empty(node *pbeg)
+bool empty(node *pbeg)
 {
-  node *pv = pbeg;
-  if (pv==NULL) return 0;
-  else return 1;
+	node *pv = pbeg;
+	if (pv == NULL) return 0;
+	else return 1;
 }
