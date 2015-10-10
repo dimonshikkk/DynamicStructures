@@ -30,7 +30,8 @@ void print(node *pbeg)
 	node *pv = pbeg;
 	while (pv != NULL)
 	{
-		cout << pv->d << endl;
+		cout << pv->d;
+		cout << " ";
 		pv = pv->p;
 	}
 }
