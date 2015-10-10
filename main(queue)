@@ -35,7 +35,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			cout << "Введите число в очередь:" << endl;
 			cin >> a;
-			if (empty(pbeg) == 0)
+			if (isEmpty(pbeg) == 0)
 			{
 				pbeg = pend = first(a);
 				system("cls");
@@ -52,7 +52,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		case 2:
 
 		{
-			if (empty(pbeg) == 0)
+			if (isEmpty(pbeg) == 0)
 			{
 				system("cls");
 				cout << "Элементов в очереди нет" << endl;
@@ -75,7 +75,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		case 3:
 
 		{
-			if (empty(pbeg) == 0)
+			if (isEmpty(pbeg) == 0)
 			{
 				system("cls");
 				cout << "Элементов в очереди нет" << endl;
