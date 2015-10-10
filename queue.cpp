@@ -9,6 +9,9 @@ node *first(int d)
 	pv->p = NULL;
 	return pv;
 }
+
+
+
 void add(node **pend, int d)
 {
 	node *pv = new node;
@@ -17,6 +20,9 @@ void add(node **pend, int d)
 	(*pend)->p = pv;
 	*pend = pv;
 }
+
+
+
 int del(node **pbeg)
 {
 	int temp = (*pbeg)->d;
@@ -25,6 +31,9 @@ int del(node **pbeg)
 	delete pv;
 	return temp;
 }
+
+
+
 void print(node *pbeg)
 {
 	node *pv = pbeg;
@@ -35,9 +44,17 @@ void print(node *pbeg)
 		pv = pv->p;
 	}
 }
-bool empty(node *pbeg)
+
+
+
+bool isEmpty(node *pbeg)
 {
-	node *pv = pbeg;
-	if (pv == NULL) return 0;
-	else return 1;
+	//node *pv = pbeg;
+	//if (pv == NULL) return 0;
+	//else return 1;
+
+	if (pbeg)
+	{ return 0; }
+	else
+	{ return 1; }
 }
