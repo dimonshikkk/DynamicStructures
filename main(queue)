@@ -16,59 +16,89 @@ int _tmain(int argc, _TCHAR* argv[])
 	node *pbeg = NULL;
 	node *pend = NULL;
 	setlocale(LC_ALL, "Russian");
-	
 
-		do
+
+	do
+	{
+		cout << "Выберите пунк из меню:" << endl;
+		cout << "0)Выход" << endl;
+		cout << "1)Добавить элемент в очередь" << endl;
+		cout << "2)Удалить элемент из очереди" << endl;
+		cout << "3)Печать очереди" << endl;
+		cin >> mn;
+		switch (mn)
+
 		{
-			cout << "Выберите пунк из меню:" << endl;
-			cout << "0)Выход" << endl;
-			cout << "1)Добавить элемент в очередь" << endl;
-			cout << "2)Удалить элемент из очереди" << endl;
-			cout << "3)Печать очереди" << endl;
-			cin >> mn;
-			switch (mn)
-		
-			{
-		
-			case 1:
-		
-			{
+
+		case 1:
+
+		{
 			cout << "Введите число в очередь:" << endl;
 			cin >> a;
 			if (empty(pbeg) == 0)
+			{
 				pbeg = pend = first(a);
+				system("cls");
+			}
 			else
+			{
 				add(&pend, a);
-			break;
-		
+				system("cls");
 			}
-		
-			case 2:
-		
-			{
+			break;
+			
+		}
+
+		case 2:
+
+		{
 			if (empty(pbeg) == 0)
+			{
+				system("cls");
 				cout << "Элементов в очереди нет" << endl;
+				cout << endl;
+				cout << endl;
+				cout << endl;
+			}
 			else
-				del(&pbeg);
+			{ 
+			del(&pbeg);
+			system("cls");
 			cout << endl;
-			break;
-		
+			cout << endl;
+			cout << endl;
 			}
-		
-			case 3:
-		
-			{
+			break;
+
+		}
+
+		case 3:
+
+		{
 			if (empty(pbeg) == 0)
+			{
+				system("cls");
 				cout << "Элементов в очереди нет" << endl;
+				cout << endl;
+				cout << endl;
+				cout << endl;
+			}
 			else
+			{
+				system("cls");
 				print(pbeg);
+				cout << endl;
+				cout << endl;
+				cout << endl;
+			}
 			break;
-		
-			}
-		
-			}
-		
-		} while (mn != 0);
+
+		}
+
+		}
+		if (mn<0 || mn>3)
+			system("cls");
+	} while (mn != 0);
 	_getch();
 	return 0;
 }
