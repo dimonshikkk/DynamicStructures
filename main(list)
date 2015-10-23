@@ -1,1 +1,107 @@
+#include "stdafx.h"
+#include "list.h"
+#include <iostream>
+#include <conio.h>
 
+
+using namespace std;
+
+
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int a, mn;
+	bool fl = 1;
+	node *pbeg = NULL;
+	node *pend = NULL;
+	setlocale(LC_ALL, "Russian");
+
+
+	do
+	{
+		cout << "Выберите пунк из меню:" << endl;
+		cout << "0)Выход" << endl;
+		cout << "1)Добавить элемент в список" << endl;
+		cout << "2)Удалить элемент из списка" << endl;
+		cout << "3)Удалить элемент из списка по ключу" << endl;
+		cout << "3)Вставка до ключа" << endl;
+		cout << "4)Сортировка" << endl;
+		cout << "5)Печать списка" << endl;
+		cin >> mn;
+		switch (mn)
+
+		{
+
+		case 1:
+
+		{
+			cout << "Введите число в очередь:" << endl;
+			cin >> a;
+			if (isEmpty(pbeg) == 0)
+			{
+				pbeg = pend = first(a);
+				system("cls");
+			}
+			else
+			{
+				add(&pend, a);
+				system("cls");
+			}
+			break;
+			
+		}
+
+		case 2:
+
+		{
+			if (isEmpty(pbeg) == 0)
+			{
+				system("cls");
+				cout << "Элементов в очереди нет" << endl;
+				cout << endl;
+				cout << endl;
+				cout << endl;
+			}
+			else
+			{ 
+			del(&pbeg);
+			system("cls");
+			cout << endl;
+			cout << endl;
+			cout << endl;
+			}
+			break;
+
+		}
+
+		case 3:
+
+		{
+			if (isEmpty(pbeg) == 0)
+			{
+				system("cls");
+				cout << "Элементов в очереди нет" << endl;
+				cout << endl;
+				cout << endl;
+				cout << endl;
+			}
+			else
+			{
+				system("cls");
+				print(pbeg);
+				cout << endl;
+				cout << endl;
+				cout << endl;
+			}
+			break;
+
+		}
+
+		}
+		if (mn<0 || mn>3)
+			system("cls");
+	} while (mn != 0);
+	_getch();
+	return 0;
+}
