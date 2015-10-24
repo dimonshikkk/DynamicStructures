@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include <iostream>
 
@@ -14,4 +15,4 @@ node *first(int d);
 void add(node **pend, int d);
 int del(node **pbeg);
 void print(node *pbeg);
-bool empty(node *pbeg);
+bool isEmpty(node *pbeg);
