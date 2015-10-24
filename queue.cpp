@@ -53,7 +53,7 @@ bool isEmpty(node *pbeg)
 	//if (pv == NULL) return 0;
 	//else return 1;
 
-	if (pbeg)
+	if (pbeg==NULL)
 	{ return 0; }
 	else
 	{ return 1; }
