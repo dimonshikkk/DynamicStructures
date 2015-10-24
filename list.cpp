@@ -12,15 +12,51 @@ node *first(int d)
 
 
 
-void add(node *pbeg, int d)
+void add(node **pend, int d)
 {
 	node *pv = new node;
 	pv->d = d;
 	pv->next = NULL;
-	node *p = pbeg;
-	while (p->next)
-	p = p->next;
-	p->next = pv;
+	(*pend)->next = pv;
+	*pend = pv;
+}
+
+
+
+int del(node **pbeg)
+{
+	int temp = (*pbeg)->d;
+	node *pv = *pbeg;
+	*pbeg = (*pbeg)->next;
+	delete pv;
+	return temp;
+}
+
+
+
+void print(node *pbeg)
+{
+	node *pv = pbeg;
+	while (pv != NULL)
+	{
+		cout << pv->d;
+		cout << " ";
+		pv = pv->next;
+	}
+}
+
+
+
+bool isEmpty(node *pbeg)
+{
+	if (pbeg == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 }
 
 
@@ -41,11 +77,11 @@ node* find(node *const pbeg, int d)
 
 
 
-bool del(node **pbeg,int key)
+bool del_key(node **pbeg, int key)
 {
-	node *pkey;
+	node *pkey = find(*pbeg, key);
 
-	if (pkey == find(*pbeg, key))
+	if (pkey !=NULL)
 	{
 		if (pkey == *pbeg)
 			*pbeg = (*pbeg)->next;
@@ -64,27 +100,32 @@ bool del(node **pbeg,int key)
 
 
 
-node *insert(node*const pbeg,int key,int d)
-{
-	node*pkey;
 
-	if (pkey = find( pbeg, key))
+/*
+	BRIEF: функция втсавки элемента после ключа
+	IN: 
+	OUT: 
+*/
+void insert(node*const pbeg, int key, int d)
+{
+	node*pkey=NULL;
+
+	if ((pkey = find(pbeg, key))!=NULL)
 	{
 		node *pv = new node;
 		pv->d = d;
 		pv->next = pkey->next;
 		pkey->next = pv;
-		return pv;
 	}
-	return 0;
 }
 
 
 
 
-node *insert_before(node**pbeg, int key, int d)
+void insert_before(node**pbeg, int key, int d)
 {
-	if (node*pkey = find(*pbeg, key))
+	node*pkey = NULL; 
+	if ((pkey = find(*pbeg, key))!=NULL)
 	{
 		node*pv = new node;
 		pv->d = d;
@@ -92,7 +133,6 @@ node *insert_before(node**pbeg, int key, int d)
 		{
 			pv->next = *pbeg;
 			*pbeg = pv;
-			return pv;
 
 		}
 		else
@@ -102,10 +142,12 @@ node *insert_before(node**pbeg, int key, int d)
 			while (p->next != pkey)
 				p = p->next;
 			p->next = pv;
-			return pv;
 		}
 	}
 }
+
+
+
 
 void sort(node *pbeg)
 {
@@ -113,6 +155,7 @@ void sort(node *pbeg)
 	bool f = 1;
 	while (f)
 	{
+		f = 0;
 		p = pbeg;
 		pv = p->next;
 		while (pv)
@@ -129,4 +172,4 @@ void sort(node *pbeg)
 		}
 	}
 }
-               
+
