@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "4)Удалить элемент из конца списка" << endl;
 		cout << "5)Удалить элемент из списка по ключу" << endl;
 		cout << "6)Сортировка" << endl;
-		cout << "7)Печать очереди" << endl;
+		cout << "7)Печать списка" << endl;
 		cin >> mn;
 		switch (mn)
 
@@ -37,7 +37,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		case 1:
 
 		{
-			cout << "Введите число в очередь:" << endl;
+			cout << "Введите число в список:" << endl;
 			cin >> a;
 			if (isEmpty(pbeg) == 0)
 			{
@@ -59,7 +59,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			if (isEmpty(pbeg) == 0)
 			{
 				system("cls");
-				cout << "Элементов в очереди нет" << endl;
+				cout << "Элементов в списке нет" << endl;
 				cout << endl;
 				cout << endl;
 				cout << endl;
@@ -82,7 +82,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			if (isEmpty(pbeg) == 0)
 			{
 				system("cls");
-				cout << "Элементов в очереди нет" << endl;
+				cout << "Элементов в списке нет" << endl;
 				cout << endl;
 				cout << endl;
 				cout << endl;
@@ -143,19 +143,19 @@ int _tmain(int argc, _TCHAR* argv[])
 		case 5:
 
 		{
-			cout << "Введите ключ";
-			cin >> key;
-			cout << endl;
 			if (isEmpty(pbeg) == 0)
 			{
 				system("cls");
-				cout << "Элементов в очереди нет" << endl;
+				cout << "Элементов в списке нет" << endl;
 				cout << endl;
 				cout << endl;
 				cout << endl;
 			}
 			else
 			{
+				cout << "Введите ключ";
+				cin >> key;
+				cout << endl;
 				del_key(&pbeg,key);
 				system("cls");
 				cout << endl;
