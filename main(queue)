@@ -46,7 +46,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				system("cls");
 			}
 			break;
-			
+
 		}
 
 		case 2:
@@ -61,12 +61,12 @@ int _tmain(int argc, _TCHAR* argv[])
 				cout << endl;
 			}
 			else
-			{ 
-			del(&pbeg);
-			system("cls");
-			cout << endl;
-			cout << endl;
-			cout << endl;
+			{
+				del(&pbeg);
+				system("cls");
+				cout << endl;
+				cout << endl;
+				cout << endl;
 			}
 			break;
 
