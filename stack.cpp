@@ -1,8 +1,15 @@
 #include "stdafx.h"
-#include "queue.h"
+#include "stack.h"
 #include <iostream>
 
 
+node* first(int d)
+{
+	node *top=new node;
+	top->d=d;
+	top->p=0;
+	return top;
+}
 void push(node **top, int d)
 {
 	node *pv = new node;
