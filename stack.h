@@ -17,4 +17,4 @@ node *first(int d);
 void push(node **top, int d);
 int pop(node**top);
 void print(node *top);
-bool isEmpty(top);
+bool isEmpty(node *top);
