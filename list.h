@@ -17,6 +17,6 @@ void print(node *pbeg);
 bool isEmpty(node *pbeg);
 node *find(node *const pbeg, int d);
 bool del_key(node **pbeg, int key);
-void insert(node *const pbeg, int key, int d);
+void insert_after(node *const pbeg, int key, int d);
 void insert_before(node **pbeg, int key, int d);
 void sort(node *pbeg);
