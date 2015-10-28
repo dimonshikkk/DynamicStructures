@@ -2,6 +2,13 @@
 #include "list.h"
 #include <iostream>
 
+
+
+/*
+	BRIEF: Функция вставки первого элемента в список
+	IN: Число,которое будет элементом в списке
+	OUT: Адрес первого элемента структуры
+*/
 node *first(int d)
 {
 	node *pv = new node;
@@ -12,6 +19,11 @@ node *first(int d)
 
 
 
+/*
+	BRIEF: Функция добавление элемента в список
+	IN: Адрес вершины,число,котоое вставят в список
+	OUT: ---
+*/
 void add(node **pend, int d)
 {
 	node *pv = new node;
@@ -23,17 +35,26 @@ void add(node **pend, int d)
 
 
 
+
+/*
+	BRIEF: Функция удаления элемента из списка
+	IN: Адрес вершины
+	OUT: ---
+*/
 int del(node **pbeg)
 {
-	int temp = (*pbeg)->d;
 	node *pv = *pbeg;
 	*pbeg = (*pbeg)->next;
 	delete pv;
-	return temp;
 }
 
 
 
+/*
+	BRIEF: Функция печати списка
+	IN: Адрес вершины
+	OUT: Элементы списка на экран
+*/
 void print(node *pbeg)
 {
 	node *pv = pbeg;
@@ -47,6 +68,11 @@ void print(node *pbeg)
 
 
 
+/*
+	BRIEF: Функция проверку на пустоту
+	IN: Адрес вершины 
+	OUT: 0,если элементов в очереди нет,1 в ином случае
+*/
 bool isEmpty(node *pbeg)
 {
 	if (pbeg == NULL)
@@ -61,12 +87,17 @@ bool isEmpty(node *pbeg)
 
 
 
+/*
+	BRIEF: Функция нахождения элемента
+	IN: Адрес вершины,число для поиска
+	OUT: Адрес элемента
+*/
 node* find(node *const pbeg, int d)
 {
 	node *pv = pbeg;
-	while (pv)
+	while (pv)  //ищем элемент пока они не закончатся
 	{
-		if (pv->d == d)
+		if (pv->d == d)  //если нашли элемент
 		{
 			break;
 		}
@@ -77,20 +108,25 @@ node* find(node *const pbeg, int d)
 
 
 
+/*
+	BRIEF: Функция удаления элемента на ключу
+	IN: Адрес вершиныю,ключ
+	OUT: true,если удалили элемент,false,в ином случае
+*/
 bool del_key(node **pbeg, int key)
 {
 	node *pkey = find(*pbeg, key);
 
-	if (pkey !=NULL)
+	if (pkey !=NULL) //Существует ключ в списке
 	{
-		if (pkey == *pbeg)
-			*pbeg = (*pbeg)->next;
+		if (pkey == *pbeg) //Ключ равен первому элементу
+			*pbeg = (*pbeg)->next; //двигаем начало на второй элемент
 		else
 		{
 			node*p = *pbeg;
-			while (p->next != pkey)
+			while (p->next != pkey) // находим адрес ключа
 				p = p->next;
-			p->next = pkey->next;
+			p->next = pkey->next; // связываем два соседних элемента ключа
 		}
 		delete pkey;
 		return true;
@@ -102,15 +138,15 @@ bool del_key(node **pbeg, int key)
 
 
 /*
-	BRIEF: функция втсавки элемента после ключа
-	IN: 
-	OUT: 
+	BRIEF: Функция вставки элемента после ключа
+	IN: Адрес вершины,ключ,число,которое вставится после ключа
+	OUT: ---
 */
-void insert(node*const pbeg, int key, int d)
+void insert_after(node*const pbeg, int key, int d)
 {
 	node*pkey=NULL;
 
-	if ((pkey = find(pbeg, key))!=NULL)
+	if ((pkey = find(pbeg, key))!=NULL) //Если существует ключ в списке
 	{
 		node *pv = new node;
 		pv->d = d;
@@ -121,7 +157,11 @@ void insert(node*const pbeg, int key, int d)
 
 
 
-
+/*
+	BRIEF: Функция вставки элемента до ключа
+	IN: Адрес вершины,ключ,элемент,который вставится до ключа
+	OUT: ---
+*/
 void insert_before(node**pbeg, int key, int d)
 {
 	node*pkey = NULL; 
@@ -129,14 +169,14 @@ void insert_before(node**pbeg, int key, int d)
 	{
 		node*pv = new node;
 		pv->d = d;
-		if (pkey == *pbeg)
+		if (pkey == *pbeg) //Ключ находится вначале
 		{
 			pv->next = *pbeg;
 			*pbeg = pv;
 
 		}
 		else
-		{
+		{       //Ключ находится не в начале
 			pv->next = pkey;
 			node*p = *pbeg;
 			while (p->next != pkey)
@@ -148,7 +188,11 @@ void insert_before(node**pbeg, int key, int d)
 
 
 
-
+/*
+	BRIEF: Функция сортировки списка
+	IN: Адрес вершины
+	OUT: ---
+*/
 void sort(node *pbeg)
 {
 	node *p, *pv;
@@ -160,15 +204,15 @@ void sort(node *pbeg)
 		pv = p->next;
 		while (pv)
 		{
-			if (pv->d < p->d)
+			if (pv->d < p->d) // Если они не упорядочены
 			{
-				int t = p->d;
-				p->d = pv->d;
-				pv->d = t;
+				int t = p->d; // Меняем
+				p->d = pv->d; // Элементы
+				pv->d = t; // Местами
 				f = 1;
 			}
-			p = pv;
-			pv = pv->next;
+			p = pv; // Переходим к следующему элементу
+			pv = pv->next; // Переходим к следующему элементу
 		}
 	}
 }
