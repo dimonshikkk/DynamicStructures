@@ -7,13 +7,13 @@ using namespace std;
 
 struct node
 {
-	int val;
-	node *prev;
+	int d;
+	node *p;
 };
 
 
 
-void print(node **top);
+node *first(int d);
 void push(node **top, int d);
 int pop(node**top);
-void print1(node *top);
+void print(node *top);
