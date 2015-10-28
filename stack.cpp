@@ -57,7 +57,7 @@ void pop(node **top)
 void print(node *top)
 {
 	node *pv = top;
-	while (pv != NULL)
+	while (pv != NULL) // Если адрес вершины не указывает на 0(т.е. есть еще элементы)
 	{
 		cout << pv->d << endl;
 		cout << " ";
