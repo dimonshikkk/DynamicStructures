@@ -33,7 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			cout << "Введите число в стек:" << endl;
 			cin >> a;
-			if (isEmpty(pbeg) == 0)
+			if (isEmpty(top) == 0)
 			{
 				top = first(a);
 				system("cls");
@@ -50,7 +50,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		case 2:
 
 		{
-			if (isEmpty(pbeg) == 0)
+			if (isEmpty(top) == 0)
 			{
 				system("cls");
 				cout << "Элементов в стеке нет" << endl;
@@ -73,7 +73,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		case 3:
 
 		{
-			if (isEmpty(pbeg) == 0)
+			if (isEmpty(top) == 0)
 			{
 				system("cls");
 				cout << "Элементов в стеке нет" << endl;
