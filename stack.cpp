@@ -10,6 +10,10 @@ node* first(int d)
 	top->p=0;
 	return top;
 }
+
+
+
+
 void push(node **top, int d)
 {
 	node *pv = new node;
@@ -17,6 +21,10 @@ void push(node **top, int d)
 	pv->p = *top;
 	*top = pv;
 }
+
+
+
+
 int pop(node **top)
 {
 	int temp = (*top)->d;
@@ -25,6 +33,10 @@ int pop(node **top)
 	delete pv;
 	return temp;
 }
+
+
+
+
 void print(node **top)
 {
 	node *pv = top;
@@ -32,5 +44,18 @@ void print(node **top)
 	{
 		cout << pv->d << endl;
 		pv = pv->p;
+	}
+}
+
+
+bool isEmpty(node *pbeg)
+{
+	if (pbeg == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
 	}
 }
