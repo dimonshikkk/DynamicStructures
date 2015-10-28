@@ -3,6 +3,13 @@
 #include <iostream>
 
 
+
+
+/*
+	BRIEF: функция втсавки первого элемента в стек
+	IN: Число,которое станет первым элементом
+	OUT: Адресс первого числа
+*/
 node* first(int d)
 {
 	node *top=new node;
@@ -13,7 +20,11 @@ node* first(int d)
 
 
 
-
+/*
+	BRIEF: Функция вставки элемента в стек
+	IN: Адрес вершины,число
+	OUT: ---
+*/
 void push(node **top, int d)
 {
 	node *pv = new node;
@@ -24,33 +35,46 @@ void push(node **top, int d)
 
 
 
-
-int pop(node **top)
+/*
+	BRIEF: Функция удаления элемента из стека
+	IN: Адрес вершины
+	OUT: ---
+*/
+void pop(node **top)
 {
-	int temp = (*top)->d;
 	node *pv = *top;
 	*top = (*top)->p;
 	delete pv;
-	return temp;
 }
 
 
 
-
-void print(node **top)
+/*
+	BRIEF: Функция печати стека
+	IN: Адрес вершины стека
+	OUT: Элементы стека на экран
+*/
+void print(node *top)
 {
 	node *pv = top;
 	while (pv != NULL)
 	{
 		cout << pv->d << endl;
+		cout << " ";
 		pv = pv->p;
 	}
 }
 
 
-bool isEmpty(node *pbeg)
+
+/*
+	BRIEF: Функция проверки стека на пустоту
+	IN: Адрес вершины стека
+	OUT: 0,если стек пуст,в ином случае 1
+*/
+bool isEmpty(node *top)
 {
-	if (pbeg == NULL)
+	if (top == NULL)
 	{
 		return 0;
 	}
