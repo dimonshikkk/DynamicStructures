@@ -1,0 +1,27 @@
+// ConsoleApplication18.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include "bst.h"
+
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+
+	int val = 10;
+	bst A(val);
+
+	val = 5;
+	A.addNodeWrapper(val);
+
+	val = 15;
+	A.addNodeWrapper(val);
+
+	val = 13;
+	A.addNodeWrapper(val);
+
+	A.find(&A, 2);
+
+	return 0;
+}
