@@ -106,3 +106,34 @@ bst bst::find(bst *root,int key)
 	}
 
 }
+
+
+int bst::delNode(bst *root, int key)
+{
+	bst pv=root;
+	if(pv==0)
+	{
+		return pv;
+	}
+	
+	if(key<pv->value)
+	pv->leftSubtree=deNode(pv->leftSubtree,key);
+	else
+	if(key>pv->value)
+	{
+	        pv->rightSubtree=delNode(pv->rightSubtree,key)
+		else
+		if (pv->leftSubtree!=0 && pv->rightSubtree!=0)
+		{
+			pv->value=minimum(pv->rightSubtree)->value;
+			pv->rightSubtree=delete(pv,(pv->rightSubtree)->value);
+			else
+			if (pv->leftSubtree!=0)
+			pv=pv->leftSubtree;
+			else
+			pv=pv->rightSubtree;
+			return pv;
+		}
+	}
+}
+
