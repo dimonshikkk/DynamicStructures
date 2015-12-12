@@ -58,40 +58,9 @@ void bst::addNodeWrapper(int key){
 	addNode(this, key);
 }
 
-/*int bst::delNode(bst *root, int key)
-{
-	bst *pv=root;
-	if (pv == 0) 
-	if (key < pv.value)
-	pv.leftSubtree = delete(pv.leftSubtree, key);
-	else 
-	if (key>pv.value)
-		pv.rightSubtree = delNode(key);
-	{
-	else
-		if (pv->left != 0 && pv->rigt != 0)
-		{
-			pv->key = minimum(pv->right)->key;
-			pv->right = delete(pv, (pv->right)->key);
-		else
-			if (pv->left != 0)
-			{
-				pv = pv->left;
-			}
-			else
-			{
-				pv = pv->rigt;
-			}
-				return pv;
-		}
-	}
-}*/
 
 
-
-
-
-bst bst::find(bst *root,int key)
+bst bst::find(bst *root, int key)
 {
 	if (!root) return NULL;
 	if (key == root->value)
@@ -102,38 +71,47 @@ bst bst::find(bst *root,int key)
 	}
 	else
 	{
-		return find(root->rightSubtree, key); 
+		return find(root->rightSubtree, key);
 	}
 
 }
 
 
-int bst::delNode(bst *root, int key)
+bst bst::delNode(bst *root, int key)
 {
-	bst pv=root;
-	if(pv==0)
+	bst *min=NULL,*pv = root;
+	if (pv == NULL)
 	{
-		return pv;
+		return *pv;
 	}
-	
-	if(key<pv->value)
-	pv->leftSubtree=deNode(pv->leftSubtree,key);
+
+	if (key < pv->value)
+		*pv->leftSubtree = delNode(pv->leftSubtree, key);
 	else
-	if(key>pv->value)
-	{
-	        pv->rightSubtree=delNode(pv->rightSubtree,key)
-		else
-		if (pv->leftSubtree!=0 && pv->rightSubtree!=0)
+		if (key > pv->value)
 		{
-			pv->value=minimum(pv->rightSubtree)->value;
-			pv->rightSubtree=delete(pv,(pv->rightSubtree)->value);
-			else
-			if (pv->leftSubtree!=0)
-			pv=pv->leftSubtree;
-			else
-			pv=pv->rightSubtree;
-			return pv;
+			*pv->rightSubtree = delNode(pv->rightSubtree, key);
 		}
-	}
+		else
+			if (pv->leftSubtree != 0 && pv->rightSubtree != 0)
+			{
+				*min = minimum(pv->rightSubtree);
+				pv->value = (min)->value;
+				*pv->rightSubtree = delNode(pv, (pv->rightSubtree)->value);
+			}
+			else
+				if (pv->leftSubtree != 0)
+					pv = pv->leftSubtree;
+				else
+					pv = pv->rightSubtree;
+	return *pv;
 }
 
+
+bst bst::minimum(bst *root)
+{
+	bst *pv = root;
+	while (pv->leftSubtree)
+		pv = pv->leftSubtree;
+	return *pv;
+}
