@@ -10,4 +10,3 @@ public:
 	//virtual int delNode(int key) =0;
 	//virtual int find(int key) =0;
 };
-
