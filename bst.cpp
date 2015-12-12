@@ -77,36 +77,34 @@ bst bst::find(bst *root, int key)
 }
 
 
-bst bst::delNode(bst *root, int key)
-{
-	bst *min=NULL,*pv = root;
-	if (pv == NULL)
-	{
-		return *pv;
-	}
-
-	if (key < pv->value)
-		*pv->leftSubtree = delNode(pv->leftSubtree, key);
-	else
-		if (key > pv->value)
-		{
-			*pv->rightSubtree = delNode(pv->rightSubtree, key);
-		}
-		else
-			if (pv->leftSubtree != 0 && pv->rightSubtree != 0)
-			{
-				*min = minimum(pv->rightSubtree);
-				pv->value = (min)->value;
-				*pv->rightSubtree = delNode(pv, (pv->rightSubtree)->value);
-			}
-			else
-				if (pv->leftSubtree != 0)
-					pv = pv->leftSubtree;
-				else
-					pv = pv->rightSubtree;
-	return *pv;
+void bst::findWrapper(int key){
+	find(this, key);
 }
 
+
+bst bst::delNode(bst *root, int key)
+{
+	bst *min = NULL;
+	bst *pv = NULL;
+	*pv= find(root, key);
+	if (pv != NULL)
+	{
+		if (pv->leftSubtree != 0 && pv->rightSubtree != 0)
+		{
+			*min = minimum(pv->rightSubtree);
+			pv->value = (min)->value;
+			*(pv->rightSubtree) = delNode(pv, (pv->rightSubtree)->value);
+		}
+		else
+			if (pv->leftSubtree != 0)
+				pv = pv->leftSubtree;
+			else
+				pv = pv->rightSubtree;
+		return *pv;
+	}
+	else
+		return NULL;
+}
 
 bst bst::minimum(bst *root)
 {
@@ -114,4 +112,9 @@ bst bst::minimum(bst *root)
 	while (pv->leftSubtree)
 		pv = pv->leftSubtree;
 	return *pv;
+}
+
+
+void bst::delNodeWrapper(int key){
+	delNode(this, key);
 }
