@@ -4,7 +4,7 @@
 
 
 
-class bst:public tree
+class bst :public tree
 {
 	bst *leftSubtree;
 	bst *rightSubtree;
@@ -16,8 +16,7 @@ public:
 
 	void addNodeWrapper(int key);
 	void addNode(bst *root, int key);
-	//int delNode(bst *root, int key);
-	bst find(bst *root,int key);
+	bst delNode(bst *root, int key);
+	bst find(bst *root, int key);
+	bst minimum(bst*root);
 };
-
-
