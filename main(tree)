@@ -3,6 +3,9 @@
 
 #include "stdafx.h"
 #include "bst.h"
+#include "conio.h"
+#include "iostream"
+using namespace std;
 
 
 
@@ -15,13 +18,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	val = 5;
 	A.addNodeWrapper(val);
 
+	val = 8;
+	A.addNodeWrapper(val);
+
+	val = 7;
+	A.addNodeWrapper(val);
+
 	val = 15;
 	A.addNodeWrapper(val);
 
 	val = 13;
 	A.addNodeWrapper(val);
+	A.inorder(&A);
+	cout << endl;
+	A.delNodeWrapper(7);
+	A.inorder(&A);
 
-	A.find(&A, 2);
 
+
+	_getch();
 	return 0;
 }
