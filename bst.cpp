@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "bst.h"
-
+#include "iostream"
+using namespace std;
 
 bst::bst()
 {
@@ -60,11 +61,32 @@ void bst::addNodeWrapper(int key){
 
 
 
-bst bst::find(bst *root, int key)
+//bst bst::find(bst *root, int key)
+bst* bst::find(bst *root, int key)
 {
+
 	if (!root) return NULL;
 	if (key == root->value)
-		return *root;
+		//return *root;
+		return root;
+	if (key < root->value)
+	{
+		return (find(root->leftSubtree, key));
+	}
+	else
+	{
+		return find(root->rightSubtree, key);
+	}
+
+}
+
+bst* bst::find1(bst *root, int key)
+{
+
+	if (!root) return NULL;
+	if (key == root->leftSubtree->value || key == root->rightSubtree->value)
+		//return *root;
+		return root;
 	if (key < root->value)
 	{
 		return (find(root->leftSubtree, key));
@@ -82,28 +104,39 @@ void bst::findWrapper(int key){
 }
 
 
-bst bst::delNode(bst *root, int key)
+//bst bst::delNode(bst *root, int key)
+bool bst::delNode(bst *root, int key)
 {
+	//bool flag = false;
 	bst *min = NULL;
 	bst *pv = NULL;
-	*pv= find(root, key);
+	pv = find(root, key);
 	if (pv != NULL)
 	{
-		if (pv->leftSubtree != 0 && pv->rightSubtree != 0)
+		if (pv->leftSubtree != NULL && pv->rightSubtree != NULL)
 		{
 			*min = minimum(pv->rightSubtree);
 			pv->value = (min)->value;
 			*(pv->rightSubtree) = delNode(pv, (pv->rightSubtree)->value);
 		}
 		else
-			if (pv->leftSubtree != 0)
+		{
+			if (pv->leftSubtree != NULL)
 				pv = pv->leftSubtree;
-			else
+			if (pv->rightSubtree != NULL)
 				pv = pv->rightSubtree;
-		return *pv;
+		}
+		if (pv->leftSubtree == NULL && pv->rightSubtree == NULL)
+		{
+			pv = find1(root, key);
+		 pv->leftSubtree=0;
+		}
+		
+		//return *pv;
+		return true;
 	}
 	else
-		return NULL;
+		return false;
 }
 
 bst bst::minimum(bst *root)
@@ -117,4 +150,25 @@ bst bst::minimum(bst *root)
 
 void bst::delNodeWrapper(int key){
 	delNode(this, key);
+}
+
+
+
+
+
+void bst::inorder(bst*root)
+{
+	cout << endl;
+	if (root)
+	{
+		cout << root->value;
+		if (root->leftSubtree != 0)
+		{
+			inorder(root->leftSubtree);
+		}
+		if (root->rightSubtree != 0)
+		{
+			inorder(root->rightSubtree);
+		}
+	}
 }
