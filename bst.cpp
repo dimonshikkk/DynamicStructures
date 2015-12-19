@@ -129,7 +129,11 @@ bool bst::delNode(bst *root, int key)
 		if (pv->leftSubtree == NULL && pv->rightSubtree == NULL)
 		{
 			pv = find1(root, key);
-		 pv->leftSubtree=0;
+			pv->leftSubtree = 0;
+			pv->leftSubtree->value = 0;
+
+
+
 		}
 		
 		//return *pv;
