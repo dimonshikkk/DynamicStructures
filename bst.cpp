@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "bst.h"
 #include "iostream"
@@ -111,6 +112,7 @@ bool bst::delNode(bst *root, int key)
 	bst *min = NULL;
 	bst *pv = NULL;
 	pv = find(root, key);
+	bst *pv1 = find1(root, key);
 	if (pv != NULL)
 	{
 		if (pv->leftSubtree != NULL && pv->rightSubtree != NULL)
@@ -122,20 +124,19 @@ bool bst::delNode(bst *root, int key)
 		else
 		{
 			if (pv->leftSubtree != NULL)
-				pv = pv->leftSubtree;
+				//pv = pv->leftSubtree;
+			pv1->leftSubtree = pv->rightSubtree;
 			if (pv->rightSubtree != NULL)
-				pv = pv->rightSubtree;
+				//pv = pv->rightSubtree;
+				pv1->leftSubtree = pv->rightSubtree;
 		}
 		if (pv->leftSubtree == NULL && pv->rightSubtree == NULL)
 		{
 			pv = find1(root, key);
 			pv->leftSubtree = 0;
-			pv->leftSubtree->value = 0;
-
-
-
+			pv->value = 0;
 		}
-		
+
 		//return *pv;
 		return true;
 	}
@@ -165,6 +166,7 @@ void bst::inorder(bst*root)
 	cout << endl;
 	if (root)
 	{
+		if (root->value !=0)
 		cout << root->value;
 		if (root->leftSubtree != 0)
 		{
